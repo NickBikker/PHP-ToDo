@@ -7,6 +7,7 @@ if (function_exists($function)) {
 } ?>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Main Page</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -14,7 +15,7 @@ if (function_exists($function)) {
 </head>
 
 <body>
-	<section class="main">
+	<section class="main"> <!--[if IE]>c <![endif]-->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -22,9 +23,11 @@ if (function_exists($function)) {
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">To-Do item toevoegen</button>
 					<div class="row">
 						<?php
+						$counter = 0;
 						foreach ($lists as $listname) {
 							if ($counter % 4 == 0 && $counter != 0) {
-								echo '</div><div class="row">'; ?>
+								echo '</div><div class="row">';
+							} ?>
 							<div class="col-md-3">
 								<h1><?= $listname["name"] ?></h1>
 								<?php
@@ -57,7 +60,9 @@ if (function_exists($function)) {
 								<?php
 								} ?>
 							</div>
-						<?php } $counter++ ?>
+						<?php
+							$counter++;
+						}; ?>
 					</div>
 				</div>
 			</div>
@@ -74,7 +79,7 @@ if (function_exists($function)) {
 					</button>
 				</div>
 				<form method="post" action="index.php?action=insert_task">
-				<div class="modal-body">
+					<div class="modal-body">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Titel</label>
 							<input type="text" class="form-control" placeholder="Titel...." name="title">
@@ -92,16 +97,17 @@ if (function_exists($function)) {
 							<label for="exampleFormControlTextarea1">Tijd nodig: </label>
 							<input type="text" class="form-control" placeholder="Vul tijd in....." name="time">
 						</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-success">Save changes</button>					
-				</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-success">Save changes</button>
+					</div>
 				</form>
-			</div>			
+			</div>
 		</div>
-	</div>	
+	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
 </html>

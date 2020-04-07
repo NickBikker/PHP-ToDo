@@ -62,15 +62,15 @@ function getAllLists(){
     $conn = openDatabaseConnection();
     $query = $conn->prepare('SELECT * FROM `lists`');
     $query->execute();
-    $list = $query->fetchAll();
-    return $list;
+    $lists = $query->fetchAll();
+    return $lists;
     $conn = null;
 }
 
 function getItemsFromStatus($status) {
     $conn = openDatabaseConnection();
     $query = $conn->prepare('SELECT * FROM `todo-items` WHERE `status` = :id');
-    $query->execute([":id"=>$status]);
+    $query->execute([':id'=>$status]);
     $items = $query->fetchAll();
     return $items;
     $conn = null;
