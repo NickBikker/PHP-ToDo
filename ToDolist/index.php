@@ -76,7 +76,7 @@ $lists = getAllLists();
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form method="post" action="get.php?action=insert_task">
+				<form method="post" action="get.php?action=insertTask">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Titel</label>

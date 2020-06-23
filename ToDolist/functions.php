@@ -36,7 +36,7 @@ function getItemFromID($id) {
     return $result;
 }
 
-function insert_task($data){
+function insertTask($data){
     $conn = openDatabaseConnection();
    $query = $conn->prepare("INSERT INTO `todo-items` (title, description, user, status, time) VALUES ('".implode("','", $data)."')");
    $query->execute();
