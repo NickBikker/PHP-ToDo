@@ -2,11 +2,7 @@
 require 'functions.php';
 $id = $_GET['user_id'];
 $data = getItemFromID($id);
-$function = $_GET['action'];
-$datas = $_POST;
-if (function_exists($function)) {
-    $function($datas);
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +21,7 @@ if (function_exists($function)) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="edit.php?action=delete">
+                <form method="post" action="get.php?action=delete">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Titel</label>
                         <input type="text" class="form-control" placeholder="Titel...." name="title" value="<?= $data['title'] ?>" readonly>

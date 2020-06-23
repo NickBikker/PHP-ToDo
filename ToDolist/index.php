@@ -1,10 +1,7 @@
-<?php require 'functions.php';
+<?php
+require 'functions.php';
 $lists = getAllLists();
-$function = $_GET['action'];
-$data = $_POST;
-if (function_exists($function)) {
-	$function($data);
-}; ?>
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +13,7 @@ if (function_exists($function)) {
 
 <body>
 	<section class="main">
+		<!--[if IE]>c <![endif]-->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -78,7 +76,7 @@ if (function_exists($function)) {
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form method="post" action="index.php?action=insert_task">
+				<form method="post" action="get.php?action=insert_task">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Titel</label>

@@ -1,17 +1,13 @@
-<?php 
+<?php
 require 'functions.php';
+
 $id = $_GET['user_id'];
 $data = getItemFromID($id);
 $lists = getAllLists();
-$function = $_GET['action'];
-$datas = $_POST;
-if(function_exists($function)){
-	$function($datas);
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +16,12 @@ if(function_exists($function)){
     <link rel="stylesheet" href="css/style.css">
     <title>Edit</title>
 </head>
-<body>
 
-    
+<body>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="edit.php?action=update">
+                <form method="post" action="get.php?action=update">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Titel</label>
                         <input type="text" class="form-control" placeholder="Titel...." name="title" value="<?= $data['title'] ?>">
@@ -42,10 +37,10 @@ if(function_exists($function)){
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Status:</label>
                         <select class="form-control" name="status">
-                            <?php foreach($lists as $row) {
-                                echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                            <?php foreach ($lists as $row) {
+                                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
                             };
-                             ?>
+                            ?>
                         </select>
                     </div>
                     <div class="form-group">
@@ -60,6 +55,7 @@ if(function_exists($function)){
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
 </body>
+
 </html>

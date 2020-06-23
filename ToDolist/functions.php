@@ -3,7 +3,7 @@
 function openDatabaseConnection(){
 $servername = "localhost";
 $username = "root";
-$password = "mysql";
+$password = "";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=php-todo", $username, $password);
@@ -16,6 +16,7 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
     }
 }
+
 
 function getAllItems() {
     $conn = openDatabaseConnection();
@@ -39,7 +40,7 @@ function insert_task($data){
     $conn = openDatabaseConnection();
    $query = $conn->prepare("INSERT INTO `todo-items` (title, description, user, status, time) VALUES ('".implode("','", $data)."')");
    $query->execute();
-   echo '<script>window.location="index.php"</script>';
+   header('location:index.php');
 }
 
 function update($data){
@@ -47,7 +48,8 @@ function update($data){
     $query = $conn->prepare("UPDATE `todo-items` SET title = :titel, description = :todo, user = :gebruiker, status = :status, time = :tijd WHERE id = :id");
     $query->execute([":titel"=>$data['title'], ":todo"=>$data['description'], ":gebruiker"=>$data['user'], ":status"=>$data['status'],":tijd"=>$data['time'],":id"=>$data['id']]);
     $message = "Aanpassen gelukt!";
-    echo "<script type='text/javascript'>alert('$message'); window.location='index.php';</script>";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    header('location:index.php');
 }
 
 function delete($data){
@@ -55,7 +57,8 @@ function delete($data){
     $query = $conn->prepare('DELETE FROM `todo-items` WHERE id = :id');
     $query->execute([':id' => $data['id']]);
     $message = "Aanpassen gelukt!";
-    echo "<script type='text/javascript'>alert('$message'); window.location='index.php';</script>";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    header('location:index.php');
 }
 
 function getAllLists(){
@@ -75,6 +78,3 @@ function getItemsFromStatus($status) {
     return $items;
     $conn = null;
 }
-
-
-?>
