@@ -4,7 +4,7 @@ $function = $_GET['action'];
 $data = $_POST;
 if (function_exists($function)) {
 	$function($data);
-} ?>
+}; ?>
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +15,7 @@ if (function_exists($function)) {
 </head>
 
 <body>
-	<section class="main"> <!--[if IE]>c <![endif]-->
+	<section class="main">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
